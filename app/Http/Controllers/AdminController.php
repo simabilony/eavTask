@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Services\AdminService;
 use Illuminate\Http\Request;
+use OpenApi\Annotations as OA;
 
 class AdminController extends Controller
 {
@@ -16,6 +17,12 @@ class AdminController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * /**
+     * @OA\Get(
+     *      path="/api/users",
+     *      @OA\Response(response="200", description="Fetch all users")
+     *  )
+     * /
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
