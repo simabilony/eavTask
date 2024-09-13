@@ -14,6 +14,7 @@
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.7",
         "spatie/image": "^3.7",
+        "spatie/laravel-permission": "^6.9",
         "spatie/laravel-translatable": "^6.8",
         "zircote/swagger-php": "^4.10"
     },
