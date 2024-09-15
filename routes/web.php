@@ -23,3 +23,8 @@ Route::get('/', function () {
     Route::get('/entities/{id}', [EntityController::class, 'show']);
 
     Route::resource('admins', AdminController::class); // Admin Crud
+    Route::middleware(['admin'])->group(function () {
+        Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
+
+});
+
