@@ -5,12 +5,12 @@ use Spatie\Image\Image;
 
 class ImageService
 {
-    public function resizeImage($path, $width, $height, $savePath)
+    public function resizeImage($image, $width = 200, $height = 300)
     {
-        Image::load($path)
+        Image::load($image->path())
             ->width($width)
             ->height($height)
-            ->save($savePath);
+            ->save();
     }
 
     public function applyEffects($path, $savePath)
@@ -18,6 +18,6 @@ class ImageService
         Image::load($path)
             ->sepia()
             ->blur(50)
-            ->save($savePath);
+            ->save();
     }
 }

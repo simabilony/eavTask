@@ -8,18 +8,17 @@ use Illuminate\Http\Request;
 
 class EntityController extends Controller
 {
-    protected $entityService;
-
+    protected EntityService $entityService;
     public function __construct(EntityService $entityService)
     {
         $this->entityService = $entityService;
     }
-    public function store(StoreEntityRequest $request)
+    public function store(StoreEntityRequest $request): \Illuminate\Http\JsonResponse
     {
         $entity = $this->entityService->createEntity($request->validated());
         return response()->json($entity, 201);
     }
-    public function show($id)
+    public function show($id): \Illuminate\Http\JsonResponse
     {
         $entity = Entity::with('attributes')->findOrFail($id);
         $nameInEnglish = $entity->getTranslation('name', 'en');
@@ -30,7 +29,7 @@ class EntityController extends Controller
             'name_in_french' => $nameInFrench
         ]);
     }
-    public function index()
+    public function index(): \Illuminate\Http\JsonResponse
     {
         $entities = Entity::with('attributes')->get();
         return response()->json($entities);
