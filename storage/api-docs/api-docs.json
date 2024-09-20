@@ -1,0 +1,88 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "E-Shop Catalog",
+        "description": "API Documentation",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api": {},
+        "/api/users": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "/**",
+                "operationId": "8adae59a0569c48f6345ff614a9b2b95",
+                "responses": {
+                    "200": {
+                        "description": "Fetch all users"
+                    }
+                }
+            }
+        },
+        "/api/products/{slug}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Get one product",
+                "operationId": "4da57027f8764997048c471f35313230",
+                "parameters": [
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "en",
+                                "ar",
+                                "es",
+                                "fr",
+                                "fa",
+                                "zh",
+                                "ru"
+                            ],
+                            "default": "en"
+                        }
+                    },
+                    {
+                        "name": "slug",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "convertCurrency",
+                        "in": "query",
+                        "description": "Currency to convert product price",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "KWD",
+                                "SYP",
+                                "USD",
+                                "SAR",
+                                "EUR"
+                            ],
+                            "default": "KWD"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Products",
+            "description": "Products"
+        }
+    ]
+}
