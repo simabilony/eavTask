@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Translatable\HasTranslations;
 
 class Admin extends Model
 {
     use HasFactory;
     use Notifiable;
-
+    use HasTranslations;
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -22,4 +23,5 @@ class Admin extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public $translatable = ['name'];
 }
